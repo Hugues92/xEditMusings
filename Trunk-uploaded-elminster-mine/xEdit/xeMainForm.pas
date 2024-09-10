@@ -15713,7 +15713,7 @@ begin
               try
                 try
                   PostAddMessage('[' + wbFormatElapsedTime( Now - wbStartTime) + '] Saving: ' + s);
-                  _File.WriteToStream(FileStream, ResetModifiedFromBool[wbResetModifiedOnSave]);
+                  _File.WriteToStream(FileStream, ResetModifiedFromBool[wbResetModifiedOnSave], true);
                   SavedThisOne := True;
                   if not (fsMemoryMapped in _File.FileStates) then
                     TryDirectRename := True;

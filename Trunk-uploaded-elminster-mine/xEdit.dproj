@@ -47,6 +47,13 @@
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_4)'=='true') or '$(Cfg_4_Win64)'!=''">
+        <Cfg_4_Win64>true</Cfg_4_Win64>
+        <CfgParent>Cfg_4</CfgParent>
+        <Cfg_4>true</Cfg_4>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='DebugSF' or '$(Cfg_5)'!=''">
         <Cfg_5>true</Cfg_5>
         <CfgParent>Cfg_2</CfgParent>
@@ -108,6 +115,10 @@
     <PropertyGroup Condition="'$(Cfg_4)'!=''">
         <DCC_Define>LiteVersion;$(DCC_Define)</DCC_Define>
         <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_4_Win64)'!=''">
+        <Debugger_RunParams>-FO4 -d:D:\Local\Perso\Temp\Data -i:D:\Local\Perso\Temp\Data\Fallout4.ini</Debugger_RunParams>
+        <Debugger_CWD>D:\Local\Perso\Temp\Data</Debugger_CWD>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_5)'!=''">
         <Icon_MainIcon>xEdit\xEdit_SF_Icon.ico</Icon_MainIcon>

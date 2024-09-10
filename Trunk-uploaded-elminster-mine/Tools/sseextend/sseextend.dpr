@@ -142,25 +142,18 @@ begin
   p := ExtractFilePath(n);
 
   v := FindFirst(n, faAnyFile, R);
-  if v = 0 then
-    try
-      repeat
-        if (R.Attr and faDirectory) = faDirectory then begin
-          if (R.Name<>'.') and (R.Name<>'..') then
-          else
-            if Pos('*', n) > 0 then
-              ExpandAndApply(p+R.Name)
-        end else begin
-          if SameStr(ExtractFileExt(n), '.ess') then
-            Decompress(ExpandFileName(p+R.Name));
-        end;
-        v := FindNext(R);
-      until v <> 0
-    finally
-      SysUtils.FindClose(R);
-    end
-  else
-    WriteLN('File not found: '+s);
+  if v = 0 then try
+    repeat
+      if (R.Attr and faDirectory) = faDirectory then
+        if (R.Name<>'.') and (R.Name<>'..') then
+        else
+      else
+        Decompress(ExpandFileName(p+R.Name));
+      v := FindNext(R);
+    until v <> 0;
+  finally
+    FindClose(R);
+  end;
 end;
 
 var

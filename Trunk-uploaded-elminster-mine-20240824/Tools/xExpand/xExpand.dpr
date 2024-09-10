@@ -149,14 +149,15 @@ begin
   if v = 0 then
     try
       repeat
-        if (R.Attr and faDirectory) = faDirectory then
+        if (R.Attr and faDirectory) = faDirectory then begin
           if (R.Name<>'.') and (R.Name<>'..') then
           else
             if Pos('*', n) > 0 then
               ExpandAndApply(p+R.Name)
-        else
+        end else begin
           if SameStr(ExtractFileExt(n), '.ess') then
             DecompressSSE(ExpandFileName(p+R.Name));
+        end;
         v := FindNext(R);
       until v <> 0
     finally
